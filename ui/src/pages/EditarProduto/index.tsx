@@ -8,6 +8,7 @@ interface Produto {
     nome: string;
     preco: number;
     descricao: string;
+    quantidade: number;
     __v?: number;
 }
 
@@ -22,7 +23,8 @@ export default function EditarProduto() {
     const [dadosForm, setDadosForm] = useState({
         nome: "",
         preco: "",
-        descricao: ""
+        descricao: "",
+        quantidade: ""
     });
     const [carregando, setCarregando] = useState(true);
 
@@ -33,7 +35,8 @@ export default function EditarProduto() {
                 setDadosForm({
                     nome: response.data.data.nome,
                     preco: String(response.data.data.preco),
-                    descricao: response.data.data.descricao
+                    descricao: response.data.data.descricao,
+                    quantidade: String(response.data.data.quantidade)
                 });
                 setCarregando(false);
             } catch (error) {
@@ -58,6 +61,7 @@ export default function EditarProduto() {
             nome: dadosForm.nome,
             preco: Number(dadosForm.preco),
             descricao: dadosForm.descricao,
+            quantidade: Number(dadosForm.quantidade)
         };
 
         try {
@@ -105,6 +109,19 @@ export default function EditarProduto() {
                             name="preco" 
                             step="0.01"
                             value={dadosForm.preco} 
+                            onChange={handleChange}
+                            required 
+                        />
+                    </div>
+
+                    
+                    <div>
+                        <label className="form-label text-muted small fw-medium">Quantidade</label>
+                        <input 
+                            type="number" 
+                            className="form-control form-control-lg fs-6" 
+                            name="quantidade" 
+                            value={dadosForm.quantidade} 
                             onChange={handleChange}
                             required 
                         />

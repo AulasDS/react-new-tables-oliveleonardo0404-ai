@@ -8,6 +8,7 @@ interface Produto {
     nome: string;
     preco: number;
     descricao: string;
+    quantidade: number;
     __v?: number;
 }
 
@@ -76,9 +77,15 @@ export default function ListaProdutos() {
 
                                     <div className="d-flex justify-content-between align-items-center mt-3 pt-3 border-top">
                                         <div>
-                                            <span className="text-muted d-block small" style={{ fontSize: '0.75rem', transform: 'translateY(3px)' }}>PREÇO</span>
+                                             <span className="text-muted d-block small" style={{ fontSize: '0.75rem', transform: 'translateY(3px)' }}>PREÇO</span>
                                             <span className="text-success fw-bold" style={{ fontSize: '1.25rem' }}>
                                                 R$ {produto.preco}
+                                            </span>
+                                        </div>
+                                        <div className="text-center">
+                                            <span className="text-muted d-block small" style={{ fontSize: '0.75rem', transform: 'translateY(3px)' }}>QUANTIDADE</span>
+                                            <span className="--bs-secondary-color-rgb" style={{ fontSize: '1.25rem' }}>
+                                                {produto.quantidade}
                                             </span>
                                         </div>
                                         <Link to={`/editar-produto/${produto._id}`} className="btn btn-primary btn-sm px-3" style={{ borderRadius: '6px' }}>
